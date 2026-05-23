@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eSmart Solutions - Oil & Gas Chemical Consulting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --teal: #20B2AA;
+            --navy: #0A2342;
+            --light-teal: #E0F7F6;
+            --gray-dark: #333;
+            --gray-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background-color: var(--white);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(10, 35, 66, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-container img {
+            height: 100px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--navy);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background-color: var(--teal);
+            color: var(--navy);
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* ===== INTRODUCTION SECTION ===== */
+        #intro {
+            background-color: var(--light-teal);
+        }
+
+        #intro p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--gray-dark);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+
+        /* ===== SERVICE HIGHLIGHTS ===== */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-card {
+            background: var(--light-teal);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--teal);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            box-shadow: 0 5px 15px rgba(32, 178, 170, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .highlight-card h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .highlight-card p {
+            color: var(--gray-dark);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        #about {
+            background-color: var(--gray-light);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content h3 {
+            color: var(--teal);
+            font-size: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--gray-dark);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        #services {
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-teal);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(10, 35, 66, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 20px rgba(32, 178, 170, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .service-card h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--gray-dark);
+            line-height: 1.7;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        #contact {
+            background-color: var(--gray-light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            color: var(--navy);
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: var(--gray-dark);
+        }
+
+        .contact-info strong {
+            color: var(--navy);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(10, 35, 66, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 5px rgba(32, 178, 170, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group button {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--white);
+                gap: 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .logo-container img {
+                height: 80px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="logo_white_bg.png" alt="eSmart Solutions Logo">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About Us</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <h1>The New Standard in Oil & Gas Chemical Consulting</h1>
+        <p>Agile, data-driven, and structurally sound solutions for modern energy firms. We provide the expertise you need to launch, scale, and optimize your operations.</p>
+        <a href="#contact" class="cta-button">Let's Build Your Strategy</a>
+    </section>
+
+    <!-- INTRODUCTION SECTION -->
+    <section id="intro">
+        <h2>Welcome to eSmart Solutions</h2>
+        <p>The chemical and O&G sectors demand precision and adaptability. As a modern consulting firm, we bridge the gap between traditional industry practices and next-generation operational efficiency. Whether you are setting up a new facility, expanding your market footprint, or optimizing your workforce, we provide the strategic roadmap and technical execution to drive your business forward.</p>
+    </section>
+
+    <!-- SERVICE HIGHLIGHTS -->
+    <section>
+        <h2>What We Offer</h2>
+        <div class="highlights">
+            <div class="highlight-card">
+                <h4>🏢 Firm Setup</h4>
+                <p>Navigate regulations and structural planning with ease.</p>
+            </div>
+            <div class="highlight-card">
+                <h4>📈 Business Development</h4>
+                <p>Unlock new markets and secure strategic partnerships.</p>
+            </div>
+            <div class="highlight-card">
+                <h4>👥 Talent Acquisition</h4>
+                <p>Build a team equipped for the demands of the energy sector.</p>
+            </div>
+            <div class="highlight-card">
+                <h4>📦 Warehouse & Logistics</h4>
+                <p>Optimize physical assets for safety and maximum efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2>Agility Meets Industry Expertise</h2>
+        <div class="about-content">
+            <h3>Our Story & Vision</h3>
+            <p>eSmart Solutions was founded on a simple premise: the Oil and Gas chemical sector needs consultants who move at the speed of modern business. We are a dynamic firm dedicated to cutting through the red tape of firm setup, management, and operational logistics. Our vision is to empower chemical businesses with intelligent, scalable solutions that foster immediate growth and long-term stability.</p>
+
+            <h3>The eSmart Advantage</h3>
+            <p>Being strategically located in the Greater Houston area—the undeniable capital of the energy sector—places us at the pulse of the industry. We don't just offer high-level advice; we dive into the technical details. By leveraging automated data workflows and precise analytical tools, we provide insights that traditional firms simply overlook. We are your boots on the ground and your strategic partners in the boardroom.</p>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services">
+        <h2>Comprehensive Consulting for the Chemical Sector</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h4>Firm Setup & Management</h4>
+                <p>Launching a chemical firm requires meticulous planning and rigorous compliance. We guide you through the entire lifecycle of company formation, from navigating complex environmental regulations to establishing robust management hierarchies. We ensure your foundation is solid so you can focus on innovation and production.</p>
+            </div>
+            <div class="service-card">
+                <h4>Business Development</h4>
+                <p>Growth in O&G requires more than just a good product; it requires the right connections and market positioning. We help you identify lucrative market gaps, build strategic industry alliances, and develop targeted outreach strategies to win new contracts and expand your operational footprint.</p>
+            </div>
+            <div class="service-card">
+                <h4>Resource & Talent Acquisition</h4>
+                <p>Your firm is only as strong as your team. We specialize in identifying, vetting, and securing top-tier talent tailored to the highly specialized needs of the chemical industry. From executive management to highly technical floor resources, we build teams that drive performance.</p>
+            </div>
+            <div class="service-card">
+                <h4>Warehouse Setup & Logistics</h4>
+                <p>A highly functional chemical warehouse is a complex ecosystem. We oversee the complete physical and operational setup of your facilities. Going beyond basic spatial layouts, we utilize advanced data extraction methods and structural engineering software integration to ensure your facility's design is optimized for workflow, structural integrity, and regulatory compliance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2>Ready to Optimize Your Operations? Let's Talk.</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>
+                    <strong>Email:</strong><br>
+                    <a href="mailto:baseer@esmartsol.com" style="color: var(--teal); text-decoration: none;">baseer@esmartsol.com</a>
+                </p>
+                <p>
+                    <strong>Phone:</strong><br>
+                    <a href="tel:+12816065506" style="color: var(--teal); text-decoration: none;">+1 (281) 606-5506</a>
+                </p>
+                <p>
+                    <strong>Location:</strong><br>
+                    Greater Houston / Sugar Land Area<br>
+                    Texas, USA
+                </p>
+            </div>
+            <div class="contact-form">
+                <h3 style="margin-top: 0;">Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="Company Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message / Specific Consulting Needs</label>
+                        <textarea id="message" name="Message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 eSmart Solutions. All rights reserved.</p>
+        <p>Oil & Gas Chemical Consulting | Greater Houston Area</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.getElementById('menuToggle');
+            if (!event.target.closest('nav')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Contact form handling - opens pre-filled Google Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const company = document.getElementById('company').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // Create a Google Forms pre-fill URL
+            // Note: You'll need to set up a Google Form and replace the form ID and field IDs
+            // For now, we'll send to email as a fallback
+            const subject = `New Inquiry from ${fullName} - ${company}`;
+            const body = `Full Name: ${fullName}\nCompany: ${company}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`;
+            
+            window.location.href = `mailto:baseer@esmartsol.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Reset form
+            this.reset();
+            alert('Thank you! Your message has been prepared to send. Please complete sending the email.');
+        });
+    </script>
+</body>
+</html>
